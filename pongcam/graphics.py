@@ -27,7 +27,13 @@ class PygletRect(object):
             ('v2f', [0]*2*numv), fill)
 
     def getrect(self):
-        return self.rect
+        # Normalize so that x,y is the upper left corner
+        x,y,w,h = self.rect
+        a = min(x, x+w)
+        b = min(y, y+h)
+        c = abs(w)
+        d = abs(h)
+        return (a,b,c,d)
     
     def setrect(self, x, y, w, h):
         self.rect = (x,y,w,h)

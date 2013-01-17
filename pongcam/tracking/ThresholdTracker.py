@@ -1,6 +1,6 @@
 import numpy as np
 import cv2, cv
-import util
+import pongcam.util as util
 
 class ThresholdTracker(util.Tracker):
     def __init__(self, threshold = 200, minsize = 5):

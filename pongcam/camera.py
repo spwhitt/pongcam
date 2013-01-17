@@ -1,4 +1,4 @@
-import cv2, cv
+import cv2, cv, sys
 
 class Camera(object):
     def __init__(self):

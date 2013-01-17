@@ -1,6 +1,6 @@
 import numpy as np
 import cv2, cv
-from util import *
+import pongcam.util as util
 
 def normalize_bgr(bgr):
     frame = cv2.cvtColor(bgr, cv.CV_BGR2RGB).astype(np.float32)
@@ -8,7 +8,7 @@ def normalize_bgr(bgr):
     frame = (frame / norm[:,:,np.newaxis]).astype(np.uint8)
     return frame
 
-class NormalizeRGB(Tracker):
+class NormalizeRGB(util.Tracker):
     def __init__(self):
         self.minbound = np.array([100,100,100])
         self.maxbound = np.array([200,200,200])
@@ -31,7 +31,7 @@ class NormalizeRGB(Tracker):
         thresh = cv2.inRange(self.frame, self.minbound, self.maxbound)
 
         contours, _ = cv2.findContours(thresh, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_NONE)
-        loc = bestcontour(contours, 10)
+        loc = util.bestcontour(contours, 10)
 
         self.shape = frame.shape
         self.contours = contours

@@ -1,6 +1,6 @@
 import numpy as np
 import cv2, cv
-import util
+import pongcam.util as util
 
 class ColorTracker(util.Tracker):
     def __init__(self):

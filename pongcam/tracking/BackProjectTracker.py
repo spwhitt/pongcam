@@ -1,10 +1,10 @@
 import numpy as np
 import cv2, cv
-import util
+import pongcam.util as util
 
 class BackProjectTracker(util.Tracker):
     def __init__(self):
-        self.frame = cv2.imread('images/ball.jpg')
+        self.frame = np.zeros((100,100,3), dtype=np.uint8)
         self.train([100,100,100,100])
 
     def train(self, region):
